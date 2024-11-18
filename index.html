@@ -9,14 +9,17 @@
 <body>
 	<header>
 		<div>
-			<a href="index.html"> Home </a>
-			
-		</div>
+		<a href="index.html"> Home </a>
+		<a href="about.html"> About </a>
+		<a href="contact.html"> Contact </a>
+		<a href="schedule.html"> Schedule </a>
+		<a href="register.html"> Sign Up </a>
+	</div>
 		<h3> Welcome to Rock Climb Up</h3>
-		<button type="button">
+		<button type="button" onClick="login()" >
 			Log In
 		</button>
-		<button type="button">
+		<button type="button" onClick="signUp()">
 			Sign Up
 		</button>
 	</header>
@@ -34,6 +37,13 @@
 		<h2> Contact Us</h2>
 
 	</div>
-
+	<script>
+		var login() = () => {
+  			window.location.href = "login.html";
+		}
+		var signUp() = () => {
+  			window.location.href = "signUp.html";
+		}
+	</script>
 </body>
 </html>
