@@ -7,15 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <section>
-	<h3> Login </h3>
-</section>
-<body>
 	<div>
 		<a href="index.html"> Home </a>
-		<a href="about.html"> About </a>
-		<a href="contact.html"> Contact </a>
-		<a href="schedule.html"> Schedule </a>
-		<a href="register.html"> Sign Up </a>
 	</div>
+</section>
+<body>
+	<section>
+		<h3> Please Login with Email and Password </h3>
+		<form action="/login.php">
+			<label for="EmailAddress"> Email Address</label><br>
+			<input type="text" id="EmailAddress" name="EmailAddress" value=""><br>
+			<label for="Password"> Password: </label><br>
+			<input type ="text" id="Password" name="Password" value=""><br>
+			<br> <input type="Submit" value="Submit">
+		</form>
+	</section>
 </body>
 </html>
