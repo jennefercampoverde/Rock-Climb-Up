@@ -7,12 +7,29 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div>
+	<header>
+		<h1>
+			Create an Account
+		</h1>
+	</header>
+	<div class="topnav">
 		<a href="index.html"> Home </a>
-		<a href="about.html"> About </a>
-		<a href="contact.html"> Contact </a>
-		<a href="schedule.html"> Schedule </a>
-		<a href="register.html"> Sign Up </a>
+		
+	</div>
+
+	<div>
+		<form>
+			<label for="firstName">Enter your first name:</label><br>
+			<input type="text" id="firstName" name="firstName"><br>
+			<label for="lastName">Enter your last name:</label><br>
+			<input type="text" id="lastName" name="lastName"><br>
+			<label for="userID"> Enter a User ID: </label><br>
+			<input type="text" id="userID" name="userID"><br>
+			<label for="password">Enter a password:</label><br>
+			<input type="text" id="password" name="password"><br>
+			<input type="submit" value="Submit">
+
+		</form>
 	</div>
 </body>
 </html>
