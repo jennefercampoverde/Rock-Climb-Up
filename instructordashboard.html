@@ -11,10 +11,13 @@
 		<a href="index.html"> Home </a>
 	</div>
 </section>
+<h1 id="InstructorHeading"> Welcome to the Instructor Page! </h1>
 <body>
 	<section>
 		<h3> Select difficulty for a class </h3>
 		<form action="/instructor.php">
+			<label for="classID">Class ID: </label><br>
+			<input type="text" id="classID"></select><br><br>
 			<label for="eventDifficulty">Level of Difficulty:</label><br>
                 <select name="difficulty" id="eventDifficulty">
                     <option value="level">Difficulty Level</option>
@@ -22,13 +25,41 @@
                     <option value="intermediate">Intermediate</option>
                     <option value="experienced">Experienced</option>
                 </select><br><br>
-			<br> <input type="Submit" value="Submit">
+			<br> <input type="Submit" value="Add Difficulty">
 		</form>
 	</section>
     <section>
 		<h3> Create A Social Event </h3>
 		<form action="/event.php">
-			<br> <input type="Submit" value="Submit">
+			<label for="eventTitle">Event Title:</label><br>
+					<input type="text" id="eventTitle" required><br><br>
+					<label for="eventDate">Event Date:</label><br>
+					<input type="date" id="eventDate" required><br><br>
+					<label for="startTime">Start Time:</label><br>
+                	<select name="startTime" id="startTime">
+                    	<option value="name">Start Time</option>
+                    	<option value="12PM">12 PM</option>
+                    	<option value="1PM">1 PM</option>
+                    	<option value="2PM">2 PM</option>
+                    	<option value="3PM">3 PM</option>
+						<option value="4PM">4 PM</option>
+                    	<option value="5PM">5 PM</option>
+                    	<option value="6PM">6 PM</option>
+                	</select><br><br>
+					<label for="endTime">Start Time:</label><br>
+                	<select name="endTime" id="endTime">
+                    	<option value="name">End Time</option>
+                    	<option value="1PM">1 PM</option>
+                    	<option value="2PM">2 PM</option>
+                    	<option value="3PM">3 PM</option>
+                    	<option value="4PM">4 PM</option>
+						<option value="5PM">5 PM</option>
+                    	<option value="6PM">6 PM</option>
+                    	<option value="7PM">7 PM</option>
+                	</select><br><br>
+					<label for="eventDescription">Event Description:</label><br>
+					<textarea id="eventDescription" required></textarea><br><br>
+					<button type="submit">Create Event</button>
 		</form>
 	</section>
 </body>
