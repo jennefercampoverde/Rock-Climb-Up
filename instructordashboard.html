@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>	</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<section>
+	<div id="topnav">
+		<a href="index.html"> Home </a>
+	</div>
+</section>
+<body>
+	<section>
+		<h3> Select difficulty for a class </h3>
+		<form action="/instructor.php">
+			<label for="eventDifficulty">Level of Difficulty:</label><br>
+                <select name="difficulty" id="eventDifficulty">
+                    <option value="level">Difficulty Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="experienced">Experienced</option>
+                </select><br><br>
+			<br> <input type="Submit" value="Submit">
+		</form>
+	</section>
+    <section>
+		<h3> Create A Social Event </h3>
+		<form action="/event.php">
+			<br> <input type="Submit" value="Submit">
+		</form>
+	</section>
+</body>
+</html>
