@@ -2,7 +2,7 @@
 
 $servername="localhost";
 $username="root";
-$password= "";
+$password= "siMbawatermelon";
 
 //creating connection for php and mysql
 $conn= new mysqli("localhost",$username, $password);
