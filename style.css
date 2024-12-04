@@ -1,17 +1,3 @@
-#topnav {
-	padding:25px;
-	border:1px black solid;
-	background:gray;
-	border-radius:10px;
-	text-align:center;
-	width:50%;
-}
-#topnav a {
-	color:white;
-	padding:50px;
-	text-decoration:none;
-}
-
 #ClimberHeader,.tableHeaders
 { 
     margin: auto;
