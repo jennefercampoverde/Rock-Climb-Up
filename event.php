@@ -44,3 +44,4 @@ if(isset($_POST['event']))
 
 
 ?>
+<!-- Create Event PHP Completed-->
