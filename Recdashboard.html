@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
+    <head>
+      <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> </title>
+  <title> Dashboard </title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-</head>
+    </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link " aria-current="page" href="index2.html">Home</a>
-        <a class="nav-link active" href="Climberdashboard.html">Dashboard</a>
+        <a class="nav-link" href="index2.html">Home</a>
+        <a class="nav-link active" aria-current="page" href="Recdashboard.html">Dashboard</a>
         <a class="nav-link" href="schedule.html">Schedule</a>
- 
       </div>
     </div>
   </div>
-</nav>  
-
-<h1 class="headers">Welcome to Your Dashboard, Climber!</h1>
+</nav>    
+<h1 class="headers">Hello {Receptionist First Name} </h1>
 <div>
-<h2 class="tableHeaders"> Your Enrolled Classes </h2>
+<h2 class="tableHeaders"> Classes </h2>
 <table class="tablesFormatClasses">
-    <tr class="bg-dark text-white">
+    <tr>
       <th>Date</th>
       <th>Class code</th>
       <th>Class Name</th>
@@ -41,46 +39,57 @@
       <td>Introduction to Climbing</td>
       <td> Mya </td>
       <td> Easy </td>
+</div>
+
+      </td>
+
     </tr>
-    <tr>
     <td>May 30th, 2024</td>
       <td>6764574</td>
       <td>Introduction to Climbing</td>
       <td> Mya </td>
       <td> Easy </td>
-    </tr>
     <tr>
+      
+    </tr>
     <td>June 2, 2024 </td>
       <td>6764574</td>
       <td>Belaying</td>
       <td> Mya </td>
       <td> Easy </td>
-    </tr>
     <tr>
+      
+    </tr>
     <td>May 30th, 2024</td>
       <td>6764574</td>
       <td>Introduction to Belaying </td>
       <td> Jen </td>
       <td> Easy </td>
-    </tr>
+        
     <tr>
+      
+    </tr>
     <td>May 30th, 2024</td>
       <td>6764574</td>
       <td>Advanced Climbing</td>
       <td> Mya </td>
       <td> Hard </td>
-    </tr>
+        
     <tr>
       <td>May 30th, 2024</td>
       <td>6764574</td>
       <td>Intermediate Climbing</td>
       <td> Mya </td>
       <td> Medium </td>
+        
+    </tr>
+    <tr>
+      
     </tr>
   </table>
   </div>
 <div>
-  <h2 class="tableHeaders"> Your Enrolled Events </h2>
+  <h2 class="tableHeaders"> Events </h2>
   <table class="tablesFormatEvents">
     <tr >
         <th>Date</th>
@@ -100,32 +109,49 @@
       <td>BIPOC Climb</td>
       <td> Nathan</td>
     </tr>
+    <tr>
+      
+    </tr>
+    <tr>
+      
+    </tr>
+    <tr>
+      
+    </tr>
+    <tr>
+      
+    </tr>
   </table>
 </div>
-<table class="tablesFormatForms">
+  <table class="tablesFormatForms">
     <tr>
       <td>
-  <div id="unEnrollClassContainer" class="dashboardContainers">
-    <h3> Unenroll from a Class </h3>
-    <form id="classForm" action="/Climberdashboard.php">
+  <div id="attendanceContainer" class="dashboardContainers">
+    <h3> Enter attendance for a class </h3>
+    <form id="attendanceForm" action="/Recdashboard.php">
       <label for="classID">Class ID: </label><br>
       <input type="text" id="classID"><br><br>
-      <br> <input type="Submit" value="Un-enroll">
+      <label>Number of Climbers that came: </label><br>
+      <input type="text" id="seats"><br><br>
+      <br> <input type="Submit" value="Enter Attendance">
     </form>
   </div>
 </td>
 <td>
     <div id="enrollContainer" class="dashboardContainers">
     <h3> Enroll a User </h3>
-    <form id="eventForm" action="/event.php">
-       <label for="eventID">Event ID: </label><br>
-      <input type="text" id="eventID"><br><br>
-      <br> <input type="Submit" value="Un-enroll">
+    <form id="enrollForm" action="/event.php">
+      <label for="classID">Class ID: </label><br>
+      <input type="text" id="classID"><br><br>
+      <label for="UserID">UserID: </label><br>
+      <input type="text" id="userID"><br><br>
+      <br> <input type="Submit" value="Enroll User">
     </form>
   </div>
 </td>
 </tr>
 </table>
+<script src="script.js"> </script>
 </body>
 </html>
     

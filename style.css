@@ -1,9 +1,12 @@
-#ClimberHeader,.tableHeaders
+
+
+#ClimberHeader,.tableHeaders, .headers
 { 
     margin: auto;
     text-align: center;
 
 }
+
 .tablesFormatClasses{
     border: 1px solid;
     text-align: center;
@@ -16,25 +19,117 @@
     text-align: center;
     width: 100%;
     background-color: #96D4A4;
-
 }
-tr:hover{
+
+.tablesFormatForms {
+  border: 1px solid;
+  text-align: center;
+  margin-top:50px;
+  border:none;
+  width: 80%;
+  border-collapse: collapse;
+  margin-left:10%;
+  margin-right:10%;
+}
+
+.tablesFormatForms td {
+  width: 33%; 
+  vertical-align: top; 
+}
+
+.dashboardContainers {
+  height: auto; 
+  width: 95%;
+  padding: 10px; 
+  border:3px solid black;
+  border-radius:5px;
+  text-align: center;
+}
+
+.tablesFormatClasses tr:hover, .tablesFormatEvents tr:hover, .tablesFormatUsers tr:hover{
     background-color:  #D6EEEE;
 }
 
-body {
-	scroll-snap-type:y mandatory;
+.tablesFormatForms tr{
+  width:100%;
+}
+
+.tablesFormatUsers{
+    border: 1px solid;
+    text-align: center;
+    width: 100%;
+    background-color: #B660A4;
+}
+
+.dashboardContainers form {
+  width: 90%; /* Uniform width for all forms */
+  margin: 0 auto; /* Center the forms */
+}
+
+.dashboardContainers label, .dashboardContainers input {
+  display: block; /* Stack form elements vertically */
+  width: 90%; /* Consistent width for labels and inputs */
+  margin: 10px auto; /* Add spacing and center the elements */
+  box-sizing: border-box;
+}
+
+.dashboardContainers input[type="text"] {
+  padding: 5px; /* Add padding for better appearance */
+}
+
+.dashboardContainers input[type="submit"] {
+  width: auto; /* Adjust button width automatically */
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.staff {
+  width:50%;
+  height:50%;
+}
+
+.tablesFormatStaff {
+  text-align: center;
+  margin-top:50px;
+  border:none;
+  width: 80%;
+  border-collapse: collapse;
+  margin-left:10%;
+  margin-right:10%;
+}
+
+.tablesFormatStaff td {
+  width: 33%; 
+  vertical-align: top; 
+}
+
+.staffContainers {
+  height: auto; 
+  width: 95%;
+  padding: 10px; 
+  border-radius:5px;
+  text-align: center;
+}
+
+#home {
+  background-color:#111;
+  color:white;
+}
+
+#allText {
+  margin-right:5%;
+  margin-left:5%;
 }
 
 #allText div p {
-	font-size:48px;
+	font-size:24px;
 }
 
 .scroll {
 	scroll-snap-align:center;
 	text-align:center;
 	flex:none;
-	margin-bottom:250px;
+	margin-bottom:200px;
 }
 
 .scroll-animation {
@@ -99,7 +194,13 @@ body {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display:block;
+}
+
+
