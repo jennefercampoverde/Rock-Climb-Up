@@ -2,6 +2,7 @@
 echo$_SESSION['user_id'].'';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 $servername="localhost";
 $username="root";
 $password= "";
@@ -52,12 +53,10 @@ if(isset($_POST['submitregistration']) )
     $passwordEncryption=sha1($password);
 
     $createUserQuery="INSERT INTO Users (Password,FirstName,LastName,DOB,Email,PhoneNumber,Role) VALUES ('$passwordEncryption','$firstName','$lastName','$dob','$email','$phoneNum','climber')";
-    $result=$conn->query($createUserQuery);
 
     if($conn->query($createUserQuery) === TRUE)
     {
-        
-    //if inserted
+
     header("Location:index.html");
     exit();
 
