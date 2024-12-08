@@ -44,7 +44,7 @@
     <tbody>
 
 <?php
-//find classes user register for 
+//find events user register for 
 
 
 $servername="localhost";
