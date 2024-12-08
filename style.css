@@ -202,5 +202,12 @@
 .show {
   display:block;
 }
+.scrollDownTextUnenroll{
+  text-align: center;
+caption-side: bottom;
+color:white
 
+
+
+}
 

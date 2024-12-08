@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body id="" >
+<body id="home" >
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +16,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        
+        <a class="nav-link " aria-current="page" href="index2.html">Home</a>
         <a class="nav-link active" href="Climberdashboard.html">Dashboard</a>
-        <a class="nav-link" href="climberSchedule.php">Schedule</a>
-        <a class="nav-link " aria-current="page" href="index.html">Logout</a>
+        <a class="nav-link" href="schedule.html">Schedule</a>
  
       </div>
     </div>
@@ -33,7 +32,7 @@
   <br>
     <thead>
     <tr class="bg-dark text-white">
-      <th>ClassID</th>
+      <th>EventID</th>
       <th> Start Time</th>
       <th> End Time</th>
       <th> Date</th>
@@ -59,14 +58,21 @@ if($conn->connect_error){
    die("Connection failed" . $conn->connect_error);
    }
  else{
- #CLASS
+ 
 $userID=1;
 
-$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '1'";
+$findUserClass="SELECT * FROM ConfirmedClass WHERE UserID='$userID'";
  $result=$conn->query($findUserClass);
+ 
+
  if($result->num_rows>0){
    while($row = $result->fetch_assoc()) {
-
+    $foundClasses=$conn->query($findClassDetail);
+    if($foundClasses->num_rows> 0){
+      $foundClassID=$row['ClassID']; 
+      echo $foundClassID;     
+      $findClassDetail="SELECT * FROM Classes WHERE ClassID='$foundClassID'";
+      while ($finalresult= $foundClasses->fetch_assoc()) {
    echo "<tr>
    <td>" . $row['ClassID'] . "</td>
    <td>". $row['StartTime'] . "</td>
@@ -80,6 +86,8 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 
 }
 
+}
+ }
 }
  ?>
  </tbody>
@@ -103,8 +111,8 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
     <tbody>
 
  <?php
- #EVENT
- $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '1'";
+ 
+ $findUserEvent="SELECT * FROM ConfirmEvent WHERE UserID='$userID'";
  $output=$conn ->query($findUserEvent);
 
  if($output->num_rows>0)
@@ -141,9 +149,9 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 <table class="tablesFormatForms">
     <tr>
       <td>
-  <div id="unEnrollClassContainer"  class="dashboardContainers">
+  <div id="unEnrollClassContainer" action="ClimberAction.php" class="dashboardContainers">
     <h3> Unenroll from a Class </h3>
-    <form id="classForm" action="ClimberAction.php" method="POST">
+    <form id="classForm" method="POST">
     <label for="userID">Re-enter your User ID: </label><br>
       <input type="text" name="ProvidedUserIDClass"id="classID"><br><br>
       

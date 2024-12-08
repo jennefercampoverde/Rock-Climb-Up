@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $classCode = $_POST['ClassID'];
 
         // Check if class code exists in the database
-        $classCheckQuery = "SELECT * FROM classes WHERE ClassID = ?";
+        $classCheckQuery = "SELECT * FROM classes WHERE ClassID = '1'";
         $stmt = $conn->prepare($classCheckQuery);
         $stmt->bind_param("s", $classCode);
         $stmt->execute();
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($classResult->num_rows > 0) {
             // If class code is valid, increment seats
-            $updateClassQuery = "UPDATE classes SET seats = seats + 1 WHERE ClassID = ?";
+            $updateClassQuery = "UPDATE classes SET seats = seats + 1 WHERE ClassID = '1'";
             $stmt3 = $conn->prepare($updateClassQuery);
             $stmt3->bind_param("s", $classCode);
 

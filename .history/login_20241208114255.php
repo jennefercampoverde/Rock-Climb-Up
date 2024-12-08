@@ -67,7 +67,7 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
     else if ($role=="receptionist"){
       $_SESSION['user_id']= $userID->id;
 
-      header("Location:Recdashboard.html"); #change to php 
+      header("Location:Recdashboard.php");
       exit();
 
     }

@@ -6,7 +6,6 @@ $username="root";
 $password= "";
 $database= "SEProject2";
 
-
 $error=FALSE;
 echo$_SESSION['user_id'].'';
 
@@ -61,20 +60,20 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
 
       $_SESSION['user_id']= $userID->id;
 
-      header("Location:Climberdashboard.php");
+      header("Location:Climberdashboard.html");
       exit();
     }
     else if ($role=="receptionist"){
       $_SESSION['user_id']= $userID->id;
 
-      header("Location:Recdashboard.html"); #change to php 
+      header("Location:receptionistdashboard.html");
       exit();
 
     }
     else if ($role== "manager"){
       $_SESSION['user_id']= $userID->id;
 
-      header("Location:managerdashboard.php");
+      header("Location:managerdashboard.html");
       exit();
     //echo "verfied";
     //echo $encryptedPassword;
@@ -84,7 +83,7 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
     else if($role=="instructor")
     {
       $_SESSION['user_id']= $userID->id;
-      header("Location:instructordashboard.php");
+      header("Location:instructordashboard.html");
       exit();
     }
    }

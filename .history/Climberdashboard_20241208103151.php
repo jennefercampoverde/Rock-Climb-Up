@@ -16,10 +16,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        
+        <a class="nav-link " aria-current="page" href="index2.html">Home</a>
         <a class="nav-link active" href="Climberdashboard.html">Dashboard</a>
-        <a class="nav-link" href="climberSchedule.php">Schedule</a>
-        <a class="nav-link " aria-current="page" href="index.html">Logout</a>
+        <a class="nav-link" href="schedule.html">Schedule</a>
  
       </div>
     </div>

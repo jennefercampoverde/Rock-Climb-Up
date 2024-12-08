@@ -6,7 +6,6 @@ $username="root";
 $password= "";
 $database= "SEProject2";
 
-
 $error=FALSE;
 echo$_SESSION['user_id'].'';
 
@@ -67,7 +66,7 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
     else if ($role=="receptionist"){
       $_SESSION['user_id']= $userID->id;
 
-      header("Location:Recdashboard.html"); #change to php 
+      header("Location:receptionistdashboard.php");
       exit();
 
     }

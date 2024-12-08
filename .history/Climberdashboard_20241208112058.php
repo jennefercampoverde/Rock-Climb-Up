@@ -18,8 +18,8 @@
       <div class="navbar-nav">
         
         <a class="nav-link active" href="Climberdashboard.html">Dashboard</a>
-        <a class="nav-link" href="climberSchedule.php">Schedule</a>
-        <a class="nav-link " aria-current="page" href="index.html">Logout</a>
+        <a class="nav-link" href="climberSchedule.html">Schedule</a>
+        <a class="nav-link " aria-current="page" href="index1.html">Logout</a>
  
       </div>
     </div>

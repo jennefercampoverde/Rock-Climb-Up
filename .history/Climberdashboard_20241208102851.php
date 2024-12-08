@@ -16,10 +16,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        
+        <a class="nav-link " aria-current="page" href="index2.html">Home</a>
         <a class="nav-link active" href="Climberdashboard.html">Dashboard</a>
-        <a class="nav-link" href="climberSchedule.php">Schedule</a>
-        <a class="nav-link " aria-current="page" href="index.html">Logout</a>
+        <a class="nav-link" href="schedule.html">Schedule</a>
  
       </div>
     </div>
@@ -141,9 +140,9 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 <table class="tablesFormatForms">
     <tr>
       <td>
-  <div id="unEnrollClassContainer"  class="dashboardContainers">
+  <div id="unEnrollClassContainer" action="ClimberAction.php" class="dashboardContainers">
     <h3> Unenroll from a Class </h3>
-    <form id="classForm" action="ClimberAction.php" method="POST">
+    <form id="classForm" method="POST">
     <label for="userID">Re-enter your User ID: </label><br>
       <input type="text" name="ProvidedUserIDClass"id="classID"><br><br>
       
