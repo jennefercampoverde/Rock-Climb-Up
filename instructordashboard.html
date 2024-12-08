@@ -29,53 +29,51 @@
 	<td>
 	<div id="difficultyContainer" class="dashboardContainers">
 		<h3> Select difficulty for a class </h3>
-		<form action="/instructor.php">
-			<label for="classID">Class ID: </label><br>
-			<input type="text" id="classID"><br><br>
-			<label for="eventDifficulty">Level of Difficulty:</label><br>
-                <select name="difficulty" id="eventDifficulty">
-                    <option value="level">Difficulty Level</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="experienced">Experienced</option>
+		<form action="instructor.php" method ="POST">
+			<label for="ClassID">Class ID: </label><br>
+			<input type="text" id="ClassID" name="ClassID"><br><br>
+
+			<label for="Difficulty">Level of Difficulty:</label><br>
+                <select name="Difficulty" id="Difficulty">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Experienced">Experienced</option>
                 </select><br><br>
-			<br> <input type="Submit" value="Add Difficulty">
+			<br> <input type="Submit" value="Difficulty" name="difficulty">
 		</form>
 	</div>
 </td>
 	<td>
     <div id="socialEventContainer" class="dashboardContainers">
 		<h3> Create A Social Event </h3>
-		<form action="/event.php">
-			<label for="eventTitle">Event Title:</label><br>
-					<input type="text" id="eventTitle" required><br><br>
-					<label for="eventDate">Event Date:</label><br>
-					<input type="date" id="eventDate" required><br><br>
-					<label for="startTime">Start Time:</label><br>
-                	<select name="startTime" id="startTime">
-                    	<option value="name">Start Time</option>
-                    	<option value="12PM">12 PM</option>
-                    	<option value="1PM">1 PM</option>
-                    	<option value="2PM">2 PM</option>
-                    	<option value="3PM">3 PM</option>
-						<option value="4PM">4 PM</option>
-                    	<option value="5PM">5 PM</option>
-                    	<option value="6PM">6 PM</option>
-                	</select><br><br>
-					<label for="endTime">Start Time:</label><br>
-                	<select name="endTime" id="endTime">
-                    	<option value="name">End Time</option>
-                    	<option value="1PM">1 PM</option>
-                    	<option value="2PM">2 PM</option>
-                    	<option value="3PM">3 PM</option>
-                    	<option value="4PM">4 PM</option>
-						<option value="5PM">5 PM</option>
-                    	<option value="6PM">6 PM</option>
-                    	<option value="7PM">7 PM</option>
-                	</select><br><br>
-					<label for="eventDescription">Event Description:</label><br>
-					<textarea id="eventDescription" required></textarea><br><br>
-					<button type="submit">Create Event</button>
+		<form action="event.php" method ="POST">
+
+			<label for="EventName">Event Title:</label><br>
+			<input type="text" id="EventName" name="EventName"><br><br>
+
+			<label for="Date">Event Date:</label><br>
+			<input type="date" id="Date" name="Date"><br><br>
+
+			<label for="StartTime">Start Time:</label><br>
+            <select name="StartTime" id="StartTime">
+                <option value="12:00:00">12 PM</option>
+                <option value="1:00:00">1 PM</option>
+                <option value="2:00:00">2 PM</option>
+                <option value="3:00:00">3 PM</option>
+            </select><br><br>
+
+			<label for="EndTime">End Time:</label><br>
+            <select name="EndTime" id="EndTime">
+                <option value="4:00:00">4 PM</option>
+				<option value="5:00:00">5 PM</option>
+                <option value="6:00:00">6 PM</option>
+                <option value="7:00:00">7 PM</option>
+            </select><br><br>
+
+			<label for="Notes">Event Description:</label><br>
+			<textarea name ="Notes" id="Notes"></textarea><br><br>
+
+			<button input type="submit" name="event"> Create Event</button>
 		</form>
 	</div>
 </td>
