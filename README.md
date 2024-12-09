@@ -1,4 +1,4 @@
-# Rock Climb UP
+# Rock Climb UP Gym Managment System
 
 ## Project Overview, Objectives, and Goals
 
@@ -19,4 +19,4 @@ In order to use our webiste, please visit: https://bagel.wiki . Once on the page
 ## Credits and Acknowledgments
 
 
-Authored by @jennefercampoverde, @EvanHamou, @mya-amaya, @timothykra
+Authored by [Jennefer Campoverde](https://github.com/jennefercampoverde), [Evan Hamou](https://github.com/EvanHamou), [Mya Amaya](https://github.com/mya-amaya), [Timothy Kravets](https://github.com/timothykra)
