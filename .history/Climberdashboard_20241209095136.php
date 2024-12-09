@@ -33,7 +33,6 @@ $firstNameofUser= $_SESSION['first_name'];
       <div class="navbar-nav">
         
         <a class="nav-link active" href="Climberdashboard.php">Dashboard</a>
-        <a class="nav-link" href="index2.html">Home</a>
         <a class="nav-link" href="climberSchedule.php">Schedule</a>
         <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
  

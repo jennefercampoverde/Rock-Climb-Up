@@ -32,7 +32,6 @@ $firstNameofUser= $_SESSION['first_name'];
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="climberdashboard.php">Dashboard</a>
-            <a class="nav-link active" aria-current="page" href="index2.html">Home</a>
             <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
           </div>
         </div>
