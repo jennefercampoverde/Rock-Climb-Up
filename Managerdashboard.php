@@ -16,8 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="index2.html">Home</a>
-            <a class="nav-link active" aria-current="page" href="Managerdashboard.html">Dashboard</a>
-            <a class="nav-link" href="schedule.html">Schedule</a>
+            <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
           </div>
         </div>
       </div>
@@ -44,10 +43,11 @@
 
         //find classes user register for 
 
-        $servername="localhost";
-        $username="bageguqo_root";
-        $password= "D@neUp!4567";
-        $database= "bageguqo_SEProject2";
+        // Database information
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "seproject2";
         $conn=new mysqli($servername, $username, $password, $database);
 
 
@@ -57,7 +57,7 @@
       }
       else{
       #CLASS
-      $userID=1;
+      $userID=26;
 
       $findAllClasses = "SELECT c.ClassID, c.StartTime, c.EndTime, c.Date, c.ClassName, c.Difficulty, u.FirstName
                        FROM Classes c

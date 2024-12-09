@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> </title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body>
-     <div id="topnav">
-        <a href="index.html"> Home </a>
-        <a href="dashboard.html"> About </a>
-        <a href="schedule.html"> Schedule </a>
-        <a href="register.html"> Sign Up </a>
-     </div>
-</body>
-
-<body>
+<body id="" >
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        
+        <a class="nav-link active" href="instructordashboard.php">Dashboard</a>
+        <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
+ 
+      </div>
+    </div>
+  </div>
+</nav>  
     <br>
     <br>
     <br>
@@ -25,9 +35,7 @@
     </h4>
     <br>
     <br>
-</body>
 
-<body>
     <h2 class="tableHeaders"> Classes </h2>
     <br>
     <table class="tablesFormatClasses">
@@ -39,7 +47,6 @@
             <th>Class Name</th>
             <th>Instructor</th>
             <th>Difficulty</th>
-            <th>Members Enrolled</th>
         </tr>
         <?php
         // Database information
@@ -68,7 +75,6 @@
                 <td>" . $row['ClassName'] . "</td>
                 <td>" . $row['UserID'] . "</td>
                 <td>" . $row['Difficulty'] . "</td>
-                <td>" . $row['Seats'] . "</td>
                 </tr>";
             }
         } else{
@@ -90,7 +96,6 @@
             <th>Event Code</th>
             <th>Event Name</th>
             <th>Host</th>
-            <th>Members Enrolled</th>
         </tr>
         <?php
         // Database information
@@ -118,7 +123,6 @@
                 <td>" . $row['EventID'] . "</td>
                 <td>" . $row['EventName'] . "</td>
                 <td>" . $row['UserID'] . "</td>
-                <td>" . $row['seats'] . "</td>
                 </tr>";
             }
         } else{
