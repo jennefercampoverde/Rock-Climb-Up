@@ -214,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <body>
-    <div class="container" >
+    <div class="container">
         <div class="form-container">
             <h2>Enroll for a Class</h2>
             <form method="POST">
