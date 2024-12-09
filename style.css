@@ -46,6 +46,8 @@
   text-align: center;
 }
 
+
+
 .tablesFormatClasses tr:hover, .tablesFormatEvents tr:hover, .tablesFormatUsers tr:hover{
     background-color:  #D6EEEE;
 }
@@ -211,3 +213,6 @@ color:white
 
 }
 
+.errorText{
+  color: red;
+}

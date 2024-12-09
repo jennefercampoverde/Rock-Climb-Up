@@ -18,30 +18,27 @@ $conn= new mysqli($servername,$username, $password, $database);
    die("Connection failed" . $conn->connect_error);
    }
  else{
-   echo"connected";
+  
 
  
 if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
 {
-   $emailAddress=$_POST['emailAddress'];
-   $password=$_POST['password'];
-   //sha1($password);
+  //email validation
+  $emailAddress=$_POST['emailAddress'];
+    if(!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)){
+      $emailError= '**Please enter a valid email';
+      
+      }
+      if(empty($_POST['password'])){
+        $passwordError= '**Please enter a password';
+      }
+      else{
+        $password=$_POST['password'];
+      }
+
+ 
    $encryptedPassword=sha1($password);
-   //echo gettype($emailAddress).'';
-   //echo gettype($encryptedPassword).'';
-   //echo gettype($password).'';
 
-
-   if (empty($emailAddress) || empty($password)){ //***not working**
-    $input_error="Missing entry";
-    $error=TRUE;
-   }
-
-  //ensuring valid email address input ***not working** 
-  if(!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)){
-  $invalidEmail= "Please enter a valid email";
-  $error=True;
-  }
 
  //query to add user to db //AND Password ='$encryptedPassword'
  $verifyUser= "SELECT * FROM Users WHERE Email='$emailAddress' AND Password ='$encryptedPassword' ";
@@ -67,7 +64,7 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
     else if ($role=="receptionist"){
       $_SESSION['user_id']= $userID->id;
 
-      header("Location:Recdashboard.html"); #change to php 
+      header("Location:Recdashboard.html"); 
       exit();
 
     }
@@ -76,9 +73,6 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
 
       header("Location:managerdashboard.php");
       exit();
-    //echo "verfied";
-    //echo $encryptedPassword;
-    //echo "$email";
     
     }
     else if($role=="instructor")
@@ -88,32 +82,52 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
       exit();
     }
    }
-    else
-    {
-    echo "did not wor la cred".mysqli_error($conn) ."<br>";
-    
-    //echo $encryptedPassword ."<br>";
-    //echo "$emailAddress" ."<br>";
-   //echo gettype($emailAddress)."<br>";
-   //echo gettype($encryptedPassword)."<br>";
-   //echo gettype($password)."<br>";
-   //echo "password:" .$password ."<br>";
-   //echo "Entered Password: " . $password; 
-   //echo "Entered Password: " . $encryptedPassword; 
-
-   echo "Error: " . $conn->error;
-    
-    }
-   
- 
-
+  
     $conn->close();
  }
 
 
-    
-
 }
 
-
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> </title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body id="home">
+	<nav class="navbar navbar-expand-lg bg-light">
+		<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		  <div class="navbar-nav">
+			<a class="nav-link " aria-current="page" href="index2.html">Home</a>
+			<a class="nav-link active" href="Climberdashboard.html">Dashboard</a>
+			<a class="nav-link" href="schedule.html">Schedule</a>
+	 
+		  </div>
+		</div>
+	  </div>
+	</nav>  
+	<div id="enrollContainer" class="dashboardContainers">
+		<h3> Please Login with Email and Password </h3>
+		<form action="login.php" method="POST">
+			<label for="EmailAddress"> Email Address</label><br>
+      <span class="errorText"> <?php echo $emailError?> </span><br>
+			<input type="text" id="EmailAddress" name="emailAddress" value=""><br>
+			<label for="Password"> Password: </label><br>
+      <span class="errorText"> <?php echo $passwordError?> </span><br>
+			<input type ="password" id="Password" name="password" value=""><br>
+			<br> <input type="Submit" name ="loginButton" value="Submit">
+			<p> Don't have an account? <a href="register.html"> Register here</a></p>
+		</form>
+	</div>
+</body>
+</html>
