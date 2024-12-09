@@ -24,6 +24,104 @@
   </div>
 </nav>	
 <h1 class="headers"> Welcome to the Instructor Page! </h1>
+<div id="1" class="scroll">
+<h2 class="tableHeaders"> Your Classes </h2>
+<table class="tablesFormatClasses">
+  <br>
+    <thead>
+    <tr class="bg-dark text-white">
+      <th>ClassID</th>
+      <th> Start Time</th>
+      <th> End Time</th>
+      <th> Date</th>
+      <th>Event Name</th>
+      <th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+
+<?php
+//find classes user register for 
+
+
+$servername="localhost";
+$username="root";
+$password= "";
+$database= "SEProject2";
+$conn=new mysqli($servername, $username, $password, $database);
+
+
+//check connection 
+if($conn->connect_error){
+   die("Connection failed" . $conn->connect_error);
+   }
+ else{
+ #CLASS
+$userID=1;
+
+$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '1'";
+ $result=$conn->query($findUserClass);
+ if($result->num_rows>0){
+   while($row = $result->fetch_assoc()) {
+
+   echo "<tr>
+   <td>" . $row['ClassID'] . "</td>
+   <td>". $row['StartTime'] . "</td>
+   <td>".$row['EndTime'] . "</td>
+   <td>".$row['Date']. "</td>
+   <td>". $row['ClassName']."</td>
+   <td>". $row['Difficulty']."</td>
+   </tr>";
+
+}
+
+}
+
+}
+ ?>
+ </tbody>
+</table>
+</div>
+
+<div >
+  <h2 class="tableHeaders"> Your Events </h2>
+  <table class="tablesFormatEvents">
+  <br>
+    <thead>
+    <tr class="bg-dark text-white">
+      <th>EventID</th>
+      <th> Start Time</th>
+      <th> End Time</th>
+      <th> Date</th>
+      <th>Event Name</th>
+      <th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+
+ <?php
+ #EVENT
+ $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '1'";
+ $output=$conn ->query($findUserEvent);
+
+ if($output->num_rows>0)
+ {
+  while($instance=$output->fetch_assoc()){
+    echo "<tr>
+    <td>".$instance['EventID'] . "</td>
+    <td>".$instance['Date']. "</td>
+   <td>".$instance['StartTime'] . "</td>
+   <td>".$instance['EndTime'] . "</td>
+   <td>".$instance['EventName']."</td>
+   <td>".$instance['Notes']."</td>
+   </tr>";
+    }
+ }
+
+
+
+?>
+
 	<table class="tablesFormatForms">
 	<tr>
 	<td>
