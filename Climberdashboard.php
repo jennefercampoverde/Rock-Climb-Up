@@ -44,15 +44,11 @@
     <tbody>
 
 <?php
-//find classes user register for 
-
-
 $servername="localhost";
 $username="root";
 $password= "";
 $database= "SEProject2";
 $conn=new mysqli($servername, $username, $password, $database);
-
 
 //check connection 
 if($conn->connect_error){
@@ -122,9 +118,7 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
  }
 
 
- //if they press enroll
- //if they press unenroll button 
- //if they press logout button do session_destroy(); and redirect to the index.php
+ $conn->close();
 
 ?>
 

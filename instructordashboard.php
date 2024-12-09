@@ -117,8 +117,7 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
    </tr>";
     }
  }
-
-
+ $conn->close();
 
 ?>
 

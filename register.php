@@ -1,7 +1,5 @@
 <?php
-#echo$_SESSION['user_id'].'';
-#error_reporting(E_ALL);
-#ini_set('display_errors', 1);
+
 
 $servername="localhost";
 $username="root";
@@ -9,7 +7,7 @@ $password= "";
 $database= "SEProject2";
 
 $error=false;
-//creating connection for php and mysql
+
 
 $conn= new mysqli($servername,$username, $password, $database);
  //check connection 
@@ -89,13 +87,13 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else
     {
-    echo "did not work".mysqli_error($conn);
-    print( "did not work".mysqli_error($conn));
+      header("Location:register.php");
+      exit();
     }
  
- }}
- 
-
+ }
+}
+$conn->close();
 }
 
 ?>
@@ -149,7 +147,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
          
 			
 			<label for="email"> Enter your email </label><br>
-         <span class="errorText"> <?php if(isset($emailError))echo $emailError;?> </span><br>
+         <span class="errorText"> <?php echo $emailError;?> </span><br>
 			
 			<input type="email" id="email" name="email"><br>
          
@@ -157,7 +155,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 			<input type="tel" id="phoneNum" name="phoneNum"><br>
 			
 			<label for="password">Enter a password:</label><br>
-         <span class="errorText"><?php if(isset($passwordError))echo $passwordError; ?> </span><br>
+         <span class="errorText"><?php echo $passwordError; ?> </span><br>
 			<input type="password" id="password" name="password"><br>
          
 
