@@ -1,3 +1,17 @@
+<?php
+
+//creating session
+
+    session_start();
+
+    if(!isset($_SESSION)){
+    header("Location:index.html");
+    exit();
+    }
+    $userID=$_SESSION['user_id'];
+    $firstNameofUser= $_SESSION['first_name'];
+?>
+
 <DOCTYPE html>
   <html>
   <head>
@@ -21,7 +35,7 @@
         </div>
       </div>
     </nav>    
-    <h1 id="ClimberHeader">Hello {Manager First Name} </h1>
+    <h1 id="ClimberHeader">Hello, <?php echo $firstNameofUser ?>!</h1>
     <div>
       <h2 class="tableHeaders"> Classes </h2>
       <table class="tablesFormatClasses">
@@ -40,6 +54,8 @@
         </style>
 
 <?php
+      
+      
 
         //find classes user register for 
 

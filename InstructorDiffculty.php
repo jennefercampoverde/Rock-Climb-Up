@@ -1,10 +1,22 @@
 <?php
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+  header("Location:index.html");
+  exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
 
 //database info.
 $servername="localhost";
 $username="root";
 $password= "";
 $database= "SEProject2";
+
 
 
 //creating connection to the database

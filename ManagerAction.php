@@ -1,5 +1,17 @@
 <?php
 
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+  header("Location:index.html");
+  exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
+//db
 $servername="localhost";
 $username="bageguqo_root";
 $password= "D@neUp!4567";

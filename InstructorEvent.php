@@ -1,4 +1,15 @@
 <?php
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+  header("Location:index.html");
+  exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
 
 //database info.
 $servername="localhost";
@@ -19,7 +30,7 @@ if(isset($_POST['event']))
  $Notes=$_POST['Notes'];
 
  //query to add event to db
- $createEventQuery="INSERT INTO Events (EventName,Date,StartTime,EndTime,Notes,UserID) VALUES ('$EventName','$Date','$StartTime','$EndTime','$Notes','1')";
+ $createEventQuery="INSERT INTO Events (EventName,Date,StartTime,EndTime,Notes,UserID) VALUES ('$EventName','$Date','$StartTime','$EndTime','$Notes','$userID')";
 
 
     if($conn->query($createEventQuery) === TRUE)

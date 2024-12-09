@@ -1,3 +1,17 @@
+
+<?php 
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+header("Location:index.html");
+exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
+?>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -55,6 +69,10 @@
             <th>Difficulty</th>
         </tr>
         <?php
+
+    
+
+
         // Database information
         $servername = "localhost";
         $username = "root";

@@ -1,4 +1,8 @@
 <?php
+//creating session
+
+session_start();
+
 
 //database info.
 $servername="localhost";
@@ -6,9 +10,6 @@ $username="root";
 $password= "";
 $database= "SEProject2";
 
-
-$error=FALSE;
-echo$_SESSION['user_id'].'';
 
 //creating connection to the database
 $conn= new mysqli($servername,$username, $password, $database);
@@ -53,23 +54,27 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
    $row=$result->fetch_assoc();
     $role= $row["Role"];
     $userID=$row["UserID"];
+    $firstName=$row["FirstName"];
 
     if($role=="climber"){
 
-      $_SESSION['user_id']= $userID->id;
-
+      $_SESSION['user_id']= $userID;
+      $_SESSION['first_name']= $firstName;
       header("Location:Climberdashboard.php");
+
       exit();
     }
     else if ($role=="receptionist"){
-      $_SESSION['user_id']= $userID->id;
+      $_SESSION['user_id']= $userID;
+      $_SESSION['first_name']= $firstName;
 
       header("Location:Recdashboard.html"); 
       exit();
 
     }
     else if ($role== "manager"){
-      $_SESSION['user_id']= $userID->id;
+      $_SESSION['user_id']= $userID;
+      $_SESSION['first_name']= $firstName;
 
       header("Location:managerdashboard.php");
       exit();
@@ -77,18 +82,20 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
     }
     else if($role=="instructor")
     {
-      $_SESSION['user_id']= $userID->id;
+      $_SESSION['user_id']= $userID;
+      $_SESSION['first_name']= $firstName;
       header("Location:instructordashboard.php");
       exit();
     }
+    
    }
-  
+   else{
+    $notFound="Credentials cannot be verified";
+  }
     $conn->close();
  }
-
-
+ 
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -119,6 +126,7 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
 		<h3> Please Login with Email and Password </h3>
 		<form action="login.php" method="POST">
 			<label for="EmailAddress"> Email Address</label><br>
+      <span class="errorText"> <?php echo $notFound;?> </span><br>
       <span class="errorText"> <?php echo $emailError?> </span><br>
 			<input type="text" id="EmailAddress" name="emailAddress" value=""><br>
 			<label for="Password"> Password: </label><br>

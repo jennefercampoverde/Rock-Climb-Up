@@ -1,3 +1,17 @@
+<?php 
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+  header("Location:index.html");
+  exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +36,7 @@
     </div>
   </div>
 </nav>	
-<h1 class="headers"> Welcome to the Instructor Page! </h1>
+<h1 class="headers"> Welcome to the <?php echo $firstNameofUser; ?> Page! </h1>
 <div id="1" class="scroll">
 <h2 class="tableHeaders"> Your Classes </h2>
 <table class="tablesFormatClasses">
@@ -40,8 +54,9 @@
     <tbody>
 
 <?php
-//find classes user register for 
 
+
+//find classes user register for 
 
 $servername="localhost";
 $username="root";
@@ -56,7 +71,6 @@ if($conn->connect_error){
    }
  else{
  #CLASS
-$userID=1;
 
 $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '1'";
  $result=$conn->query($findUserClass);

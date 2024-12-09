@@ -1,3 +1,18 @@
+
+<?php 
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+  header("Location:index.html");
+  exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
+?>
+
 <!--show schedule-->
 <DOCTYPE HTML>
 <html>
@@ -26,7 +41,7 @@
   </div>
 </nav>  
 <div id="allText">
-<h1 class="headers">Welcome to Your Dashboard, Climber!</h1>
+<h1 class="headers"> Welcome to your dashboard <?php echo $firstNameofUser;?> ! </h1>
 <div id="1" class="scroll">
 <h2 class="tableHeaders"> Your Enrolled Classes </h2>
 <table class="tablesFormatClasses">
@@ -44,6 +59,9 @@
     <tbody>
 
 <?php
+
+
+//db
 $servername="localhost";
 $username="root";
 $password= "";
@@ -56,9 +74,8 @@ if($conn->connect_error){
    }
  else{
  #CLASS
-$userID=1;
 
-$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '1'";
+$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '$userID'";
  $result=$conn->query($findUserClass);
  if($result->num_rows>0){
    while($row = $result->fetch_assoc()) {
@@ -100,7 +117,7 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 
  <?php
  #EVENT
- $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '1'";
+ $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '$userID'";
  $output=$conn ->query($findUserEvent);
 
  if($output->num_rows>0)
@@ -138,8 +155,6 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
   <div id="unEnrollClassContainer"  class="dashboardContainers">
     <h3> Unenroll from a Class </h3>
     <form id="classForm" action="ClimberAction.php" method="POST">
-    <label for="userID">Re-enter your User ID: </label><br>
-      <input type="text" name="ProvidedUserIDClass"id="classID"><br><br>
       
       <label for="classID">Class ID: </label><br>
       <input type="text" name="submittedClassID" id="classID"><br><br>
@@ -154,8 +169,6 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
     <h3> Un-Enroll from a Event </h3>
     
     <form id="eventForm" action="ClimberAction.php"  method="POST">
-    <label for="userID">Re-enter your User ID: </label><br>
-    <input type="text" name="ProvidedUserIDEvent" id="eventID"><br><br>
 
        <label for="eventID">Event ID: </label><br>
       <input type="text" name="submittedEventID" id="eventID"><br><br>
