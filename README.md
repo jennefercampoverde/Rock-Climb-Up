@@ -1,26 +1,22 @@
-# Rock Climbing Managment System
+# Rock Climb UP
 
-1. Project Title and Description
+1. Project Overview, Objectives, and Goals
 
-Purpose:
+Our rock climbing gym managment system strives to help organize and maintain all the necessary services provided by rock climbing gyms now a day. Our site would allow local memebers and interested indivduals with an overview of the services we have to offer. Furthmore, our webiste will allow climbers, climbing instructors, and managment to faciliate various things depending on their role and authority. The goal of this project was to incorporate a multi-user platform that offers multiple levels of access base on the user role.
 
-
-Project Overview, Objectives, and Goals:
+With this project, we analyzed managaging an organized facilitiy such as rock climbing gym has various levels to it and can be an overwhelming task for staff, managment and even the consumer interacting with the facility. Using an online managment system to facilitate, track, and manage various different aspects of a rock climbing gym affect the experience in a positive way. 
 
 
 Methodology:
-
-2. Installation
-
-Purpose: Instructions on how to install the project or its dependencies.
-Suggested Content: Step-by-step instructions with commands, prerequisites, and environment setup.
 
 
 
 3. Usage
 
-Purpose: Explain how to use the project or software.
-Suggested Content: Code snippets, example commands, or screenshots that show the project in action.
+In order to use our webiste, please visit: https://bagel.wiki . Once on the page, create a account using the registration page and login with your credentials.
 
 
 4. Credits and Acknowledgments
+
+
+Authored by Jennefer Campoverde, Evan Hamou, Mya Amaya, Timothy Kravets.
