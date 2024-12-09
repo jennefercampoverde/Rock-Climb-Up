@@ -187,7 +187,7 @@
   }
 
   //if they press logout button do session_destroy(); and redirect to the index.html
-
+  $conn->close();
   ?>
 </table>
 </div>
