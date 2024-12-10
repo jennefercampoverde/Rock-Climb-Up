@@ -1,17 +1,43 @@
+
+<?php 
+//creating session
+
+session_start();
+
+if(!isset($_SESSION)){
+header("Location:index.html");
+exit();
+}
+$userID=$_SESSION['user_id'];
+$firstNameofUser= $_SESSION['first_name'];
+
+?>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-     <div id="topnav">
-        <a href="index.html"> Home </a>
-        <a href="dashboard.html"> About </a>
-        <a href="climberSchedule.php"> Schedule </a>
-        <a href="register.html"> Sign Up </a>
-     </div>
-</body>
-
-<body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Dashboard </title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="climberdashboard.php">Dashboard</a>
+            <a class="nav-link active" aria-current="page" href="index2.html">Home</a>
+            <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>    
     <br>
     <br>
     <br>
@@ -44,6 +70,10 @@
             <th>Difficulty</th>
         </tr>
         <?php
+
+    
+
+
         // Database information
         $servername = "localhost";
         $username = "root";
@@ -57,7 +87,9 @@
         }
 
         // retrieving data from classes table
-        $sql = "SELECT * FROM classes";
+        $sql = "SELECT classes.Date, classes.StartTime, classes.EndTime, classes.ClassID, classes.ClassName, users.first_name AS instructor_name, classes.Difficulty 
+        FROM classes 
+        JOIN users ON classes.UserID = users.user_id";
         $result = $conn->query($sql);
         
         if ($result->num_rows >0){
@@ -68,7 +100,7 @@
                 <td>" . $row['EndTime'] . "</td>
                 <td>" . $row['ClassID'] . "</td>
                 <td>" . $row['ClassName'] . "</td>
-                <td>" . $row['UserID'] . "</td>
+                <td>" . $row['instructor_name'] . "</td>
                 <td>" . $row['Difficulty'] . "</td>
                 </tr>";
             }
@@ -105,8 +137,10 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // retrieving data from classes table
-        $sql = "SELECT * FROM events";
+        // retrieving data from events table
+        $sql = "SELECT events.Date, events.StartTime, events.EndTime, events.EventID, events.EventName, users.first_name AS host_name
+        FROM events
+        JOIN users ON events.UserID = users.user_id";
         $result = $conn->query($sql);
         
         if ($result->num_rows >0){
@@ -117,7 +151,7 @@
                 <td>" . $row['EndTime'] . "</td>
                 <td>" . $row['EventID'] . "</td>
                 <td>" . $row['EventName'] . "</td>
-                <td>" . $row['UserID'] . "</td>
+                <td>" . $row['host_name'] . "</td>
                 </tr>";
             }
         } else{
@@ -152,17 +186,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $classResult = $stmt->get_result();
 
         if ($classResult->num_rows > 0) {
-            // If class code is valid, increment seats
-            $updateClassQuery = "UPDATE classes SET seats = seats + 1 WHERE ClassID = ?";
-            $stmt3 = $conn->prepare($updateClassQuery);
-            $stmt3->bind_param("s", $classCode);
-
-            if ($stmt3->execute()) {
-                echo "Enrollment successful! Participants count updated.";
+            // If class code is valid, enroll in class
+            $sql = "INSERT INTO ConfirmClass (UserID, ClassID) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ii", $userID, $classID); 
+            if ($stmt->execute()) {
+                echo "Successfully enrolled in the class!";
             } else {
-                echo "Error: " . $stmt3->error;
+                echo "Error enrolling in class: " . $stmt->error;
             }
-            $stmt3->close();
+            $stmt->close();
         } else {
             echo "Error: Invalid class code.";
         }
@@ -181,17 +214,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $eventResult = $stmt2->get_result();
 
         if ($eventResult->num_rows > 0) {
-            // If event code is valid, increment seats
-            $updateEventQuery = "UPDATE events SET seats = seats + 1 WHERE EventID = ?";
-            $stmt4 = $conn->prepare($updateEventQuery);
-            $stmt4->bind_param("s", $eventCode);
-
-            if ($stmt4->execute()) {
-                echo "Enrollment successful! Participants count updated.";
+            // If event code is valid, enroll in event
+            $sql = "INSERT INTO ConfirmEvent (UserID, EventID) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ii", $userID, $eventID); // Assuming UserID and EventID are integers
+            if ($stmt->execute()) {
+                echo "Successfully enrolled in the event!";
             } else {
-                echo "Error: " . $stmt4->error;
+                echo "Error enrolling in event: " . $stmt->error;
             }
-            $stmt4->close();
+            $stmt->close();
         } else {
             echo "Error: Invalid event code.";
         }
@@ -203,7 +235,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <body>
-    <div class="container">
+    <div class="container" >
         <div class="form-container">
             <h2>Enroll for a Class</h2>
             <form method="POST">
