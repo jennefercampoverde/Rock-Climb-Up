@@ -127,6 +127,82 @@ else{
     echo"Not able to update role";
 }
   }
+
+  #Create Event 
+  else if(isset($_POST['createEvent']))
+{
+ $EventName=$_POST['EventName'];
+ $Date=$_POST['Date'];
+ $StartTime=$_POST['StartTime'];
+ $EndTime=$_POST['EndTime'];
+ $Notes=$_POST['Notes'];
+
+ //query to add event to db
+ $createEventQuery="INSERT INTO Events (EventName,Date,StartTime,EndTime,Notes,UserID) VALUES ('$EventName','$Date','$StartTime','$EndTime','$Notes','$userID')";
+
+
+    if($conn->query($createEventQuery) === TRUE)
+    {
+    header("Location:Managerdashboard.php");
+    exit();
+    
+    }
+    else
+    {
+    echo "Your request was not fulfilled. The event was not created".mysqli_error($conn);
+    
+    }
+
+ }
+
+ #Create Class
+ else if(isset($_POST['createClass']))
+{
+ $ClassName=$_POST['ClassName'];
+ $Date=$_POST['Date'];
+ $StartTime=$_POST['StartTime'];
+ $EndTime=$_POST['EndTime'];
+ $Diff=$_POST['difficulty'];
+ $Instructor=$_POST['instructorID'];
+
+ //query to add class to db
+ $createClassQuery="INSERT INTO Classes (StartTime,EndTime,Date,UserID, Difficulty,Seats,ClassName) VALUES ('$StartTime','$EndTime','$Date','$Instructor','$Diff',0,'$ClassName')";
+
+
+    if($conn->query($createClassQuery) === TRUE)
+    {
+    header("Location:Managerdashboard.php");
+    exit();
+    
+    }
+    else
+    {
+    echo "Your request was not fulfilled. The class was not created".mysqli_error($conn);
+    
+    }
+
+ }
+
+ #Update Seats
+ else if(isset($_POST['updateSeats'])){
+
+    $submittedClassID=$_POST['providedClassID'];
+    $submittedSeats=$_POST['providedSeats'];
+
+  $updateSeats="UPDATE Classes SET Seats='$submittedSeats' WHERE ClassID = '$submittedClassID'";
+
+if($conn->query($updateSeats)==TRUE){
+  header("Location:Managerdashboard.php");
+    exit();
+  
+}
+else{
+    echo"Not able to assign instructor";
+}
+  }
+
+
+
   $conn->close();
 }
 ?>

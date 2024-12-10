@@ -13,9 +13,9 @@ $firstNameofUser= $_SESSION['first_name'];
 
 //database info.
 $servername="localhost";
-$username="root";
-$password= "";
-$database= "SEProject2";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
 
 
 
@@ -37,7 +37,7 @@ if(isset($_POST['difficulty']))
 
     $addDifficultyQuery="UPDATE Classes SET Difficulty = '$Difficulty' WHERE ClassID = '$ClassID'";
     $conn->query($addDifficultyQuery);
-    echo "The Difficulty has been added to the class.";
+    header("Location:instructordashboard.php");
     
     }
     else

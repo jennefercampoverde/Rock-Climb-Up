@@ -29,7 +29,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="index2.html">Home</a>
+            <a class="nav-link" href="managerIndex.html">Home</a>
+            <a class="nav-link active" href="Managerdashboard.php">Dashboard</a>
             <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
           </div>
         </div>
@@ -46,6 +47,7 @@
           <th> Date</th>
           <th> Instructor </th>
           <th>Class Name</th>
+          <th> Seats </th>
           <th>Difficulty</th>
         </tr>
 
@@ -60,10 +62,10 @@
         //find classes user register for 
 
         // Database information
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "seproject2";
+        $servername="localhost";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
         $conn=new mysqli($servername, $username, $password, $database);
 
 
@@ -73,9 +75,8 @@
       }
       else{
       #CLASS
-      $userID=26;
 
-      $findAllClasses = "SELECT c.ClassID, c.StartTime, c.EndTime, c.Date, c.ClassName, c.Difficulty, u.FirstName
+      $findAllClasses = "SELECT c.ClassID, c.StartTime, c.EndTime, c.Date, c.ClassName, c.Difficulty, c.Seats, u.FirstName
                        FROM Classes c
                        INNER JOIN Users u ON c.UserID = u.UserID";  // Assuming 'UserID' is in both tables
       $result=$conn->query($findAllClasses);
@@ -89,6 +90,7 @@
        <td>".$row['Date']. "</td>
        <td>" . $row['FirstName'] . "</td>
        <td>". $row['ClassName']."</td>
+       <td>". $row['Seats']."</td>
        <td>". $row['Difficulty']."</td>
      </tr>";
 
@@ -173,6 +175,89 @@
       </div>
     </td>
   </tr>
+  <tr>
+    <td>
+      <div id="seatsContainer" class="dashboardContainers">
+        <h3> Update Seats for Class </h3>
+        <form id="instructorForm" action="ManagerAction.php" method="POST">
+          <label for="classID">Class ID: </label><br>
+          <input type="text" name="providedClassID" id="classID"><br><br>
+          <label for="UserID">Seats: </label><br>
+          <input type="text" name="providedSeats" id="userID"><br><br>
+          <br> <input type="Submit" name ="updateSeats" value="Update Seats">
+        </form>
+      </div>
+    </td>
+    <td>
+    <div id="classContainer" class="dashboardContainers">
+    <h3> Create A Class </h3>
+    <form action="ManagerAction.php" method ="POST">
+
+      <label for="ClassName">Class Name:</label><br>
+      <input type="text" id="ClassName" name="ClassName"><br><br>
+
+      <label for="Date">Date of Class:</label><br>
+      <input type="date" id="Date" name="Date"><br><br>
+
+      <label for="StartTime">Start Time:</label><br>
+            <select name="StartTime" id="StartTime">
+                <option value="12:00:00">12 PM</option>
+                <option value="1:00:00">1 PM</option>
+                <option value="2:00:00">2 PM</option>
+                <option value="3:00:00">3 PM</option>
+            </select><br><br>
+
+      <label for="EndTime">End Time:</label><br>
+            <select name="EndTime" id="EndTime">
+                <option value="4:00:00">4 PM</option>
+        <option value="5:00:00">5 PM</option>
+                <option value="6:00:00">6 PM</option>
+                <option value="7:00:00">7 PM</option>
+            </select><br><br>
+      <label for="instructorID">UserID of Instructor: </label><br>
+      <input type="text" name="instructorID" id="instructorID"><br><br>
+      <label for="difficulty">Difficulty</label><br>
+      <input type="text" name ="difficulty" id="difficulty"><br><br>
+
+      <button input type="submit" name="createClass"> Create Class</button>
+    </form>
+  </div>
+</td>
+    <td>
+    <div id="socialEventContainer" class="dashboardContainers">
+    <h3> Create A Social Event </h3>
+    <form action="ManagerAction.php" method ="POST">
+
+      <label for="EventName">Event Title:</label><br>
+      <input type="text" id="EventName" name="EventName"><br><br>
+
+      <label for="Date">Event Date:</label><br>
+      <input type="date" id="Date" name="Date"><br><br>
+
+      <label for="StartTime">Start Time:</label><br>
+            <select name="StartTime" id="StartTime">
+                <option value="12:00:00">12 PM</option>
+                <option value="1:00:00">1 PM</option>
+                <option value="2:00:00">2 PM</option>
+                <option value="3:00:00">3 PM</option>
+            </select><br><br>
+
+      <label for="EndTime">End Time:</label><br>
+            <select name="EndTime" id="EndTime">
+                <option value="4:00:00">4 PM</option>
+        <option value="5:00:00">5 PM</option>
+                <option value="6:00:00">6 PM</option>
+                <option value="7:00:00">7 PM</option>
+            </select><br><br>
+
+      <label for="Notes">Event Description:</label><br>
+      <textarea name ="Notes" id="Notes"></textarea><br><br>
+
+      <button input type="submit" name="createEvent"> Create Event</button>
+    </form>
+  </div>
+</td>
+</tr>
 </table>
 <div>
   <h2 class="tableHeaders"> Users </h2>
@@ -220,7 +305,6 @@
             <option value="role">Role</option>
             <option value="climber">Climber</option>
             <option value="instructor">Instructor</option>
-            <option value="receptionist">Receptionist</option>
             <option value="manager">Manager</option>
           </select><br><br>
           <br> <input type="Submit" name="updateRole" value="Update Role">

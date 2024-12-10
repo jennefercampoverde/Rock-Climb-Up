@@ -17,7 +17,7 @@ $firstNameofUser= $_SESSION['first_name'];
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>	</title>
+	<title> Dashboard	</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
@@ -29,14 +29,16 @@ $firstNameofUser= $_SESSION['first_name'];
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        <a class="nav-link" href="instructorIndex.html">Home</a>
+        <a class="nav-link active" href="instructordashboard.php">Dashboard</a>
         <a class="nav-link" href="instructorSchedule.php">Schedule</a>
-        <a class="nav-link active" href="logout.php">Logout</a>
+        <a class="nav-link" href="logout.php">Logout</a>
  
       </div>
     </div>
   </div>
 </nav>	
-<h1 class="headers"> Welcome to the <?php echo $firstNameofUser; ?> Page! </h1>
+<h1 class="headers"> Welcome to your dashboard, <?php echo $firstNameofUser; ?>!</h1>
 <div id="1" class="scroll">
 <h2 class="tableHeaders"> Your Classes </h2>
 <table class="tablesFormatClasses">
@@ -59,9 +61,9 @@ $firstNameofUser= $_SESSION['first_name'];
 //find classes user register for 
 
 $servername="localhost";
-$username="root";
-$password= "";
-$database= "SEProject2";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
 $conn=new mysqli($servername, $username, $password, $database);
 
 
@@ -72,7 +74,7 @@ if($conn->connect_error){
  else{
  #CLASS
 
-$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '1'";
+$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '$userID'";
  $result=$conn->query($findUserClass);
  if($result->num_rows>0){
    while($row = $result->fetch_assoc()) {
@@ -114,7 +116,7 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 
  <?php
  #EVENT
- $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '1'";
+ $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '$userID'";
  $output=$conn ->query($findUserEvent);
 
  if($output->num_rows>0)
@@ -149,7 +151,7 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
                     <option value="Intermediate">Intermediate</option>
                     <option value="Experienced">Experienced</option>
                 </select><br><br>
-			<br> <input type="Submit" value="Difficulty" name="difficulty">
+			<br> <input type="Submit" value="Update Difficulty" name="difficulty">
 		</form>
 	</div>
 </td>

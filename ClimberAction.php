@@ -12,9 +12,9 @@ $firstNameofUser= $_SESSION['first_name'];
 
 //db
 $servername="localhost";
-$username="root";
-$password= "";
-$database= "SEProject2";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
 $conn=new mysqli($servername, $username, $password, $database);
 
 
@@ -59,6 +59,6 @@ else if(isset($_POST['unenrollUserClass'])){
     echo"Not able to delete class";
 }
 }
-$conn->close();
+    $conn->close();
 }
 ?>

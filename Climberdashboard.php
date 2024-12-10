@@ -19,7 +19,7 @@ $firstNameofUser= $_SESSION['first_name'];
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> </title>
+  <title> Dashboard</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
@@ -32,8 +32,8 @@ $firstNameofUser= $_SESSION['first_name'];
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         
+        <a class="nav-link" href="climberIndex.html">Home</a>
         <a class="nav-link active" href="Climberdashboard.php">Dashboard</a>
-        <a class="nav-link" href="index2.html">Home</a>
         <a class="nav-link" href="climberSchedule.php">Schedule</a>
         <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
  
@@ -42,7 +42,7 @@ $firstNameofUser= $_SESSION['first_name'];
   </div>
 </nav>  
 <div id="allText">
-<h1 class="headers"> Welcome to your dashboard <?php echo $firstNameofUser;?> ! </h1>
+<h1 class="headers"> Welcome to your dashboard <?php echo $firstNameofUser;?>! </h1>
 <div id="1" class="scroll">
 <h2 class="tableHeaders"> Your Enrolled Classes </h2>
 <table class="tablesFormatClasses">
@@ -64,9 +64,9 @@ $firstNameofUser= $_SESSION['first_name'];
 
 //db
 $servername="localhost";
-$username="root";
-$password= "";
-$database= "SEProject2";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
 $conn=new mysqli($servername, $username, $password, $database);
 
 //check connection 

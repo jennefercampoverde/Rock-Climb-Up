@@ -16,7 +16,7 @@ $firstNameofUser= $_SESSION['first_name'];
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> </title>
+  <title> Schedule </title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
@@ -28,8 +28,9 @@ $firstNameofUser= $_SESSION['first_name'];
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        
-        <a class="nav-link active" href="instructordashboard.php">Dashboard</a>
+        <a class="nav-link" href="instructorIndex.html">Home</a>
+        <a class="nav-link" href="instructordashboard.php">Dashboard</a>
+        <a class="nav-link active" href="instructorSchedule.php">Schedule</a>
         <a class="nav-link " aria-current="page" href="logout.php">Logout</a>
  
       </div>
@@ -53,10 +54,9 @@ $firstNameofUser= $_SESSION['first_name'];
     <br>
     <table class="tablesFormatClasses">
         <tr class="bg-dark text-white">
-            <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Class Code</th>
+            <th>Date</th>
             <th>Class Name</th>
             <th>Instructor</th>
             <th>Difficulty</th>
@@ -65,36 +65,41 @@ $firstNameofUser= $_SESSION['first_name'];
 
 
         // Database information
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "seproject2";
-        
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // establishing database connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $servername="localhost";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
+        $conn=new mysqli($servername, $username, $password, $database);
 
-        // retrieving data from classes table
-        $sql = "SELECT * FROM classes";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows >0){
-            while ($row = $result-> fetch_assoc()){
-                echo "<tr>
-                <td>" . $row['Date'] . "</td>
-                <td>" . $row['StartTime'] . "</td>
-                <td>" . $row['EndTime'] . "</td>
-                <td>" . $row['ClassID'] . "</td>
-                <td>" . $row['ClassName'] . "</td>
-                <td>" . $row['UserID'] . "</td>
-                <td>" . $row['Difficulty'] . "</td>
-                </tr>";
-            }
-        } else{
-            echo"No Results";
-        }
+
+        //check connection 
+        if($conn->connect_error){
+        die("Connection failed" . $conn->connect_error);
+      }
+      else{
+      #CLASS
+
+      $findAllClasses = "SELECT c.ClassID, c.StartTime, c.EndTime, c.Date, c.ClassName, c.Difficulty, u.FirstName
+                       FROM Classes c
+                       INNER JOIN Users u ON c.UserID = u.UserID";  // Assuming 'UserID' is in both tables
+      $result=$conn->query($findAllClasses);
+      if($result->num_rows>0){
+      while($row = $result->fetch_assoc()) {
+
+      echo "<tr>
+       <td>". $row['StartTime'] . "</td>
+       <td>".$row['EndTime'] . "</td>
+       <td>".$row['Date']. "</td>
+       <td>" . $row['ClassName'] . "</td>
+       <td>". $row['FirstName']."</td>
+       <td>". $row['Difficulty']."</td>
+     </tr>";
+
+   }
+
+ }
+
+}
         ?>
     </table>
     <br>
@@ -103,46 +108,52 @@ $firstNameofUser= $_SESSION['first_name'];
 <body>
     <h2 class="tableHeaders"> Social Events </h2>
     <br>
-    <table class="tablesFormatClasses">
+    <table class="tablesFormatEvents">
         <tr class="bg-dark text-white">
-            <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Event Code</th>
-            <th>Event Name</th>
+            <th>Date</th>
             <th>Host</th>
+            <th>Event Name</th>
+            <th>Notes</th>
         </tr>
         <?php
         // Database information
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "seproject2";
-        
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // establishing database connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $servername="localhost";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
+        $conn=new mysqli($servername, $username, $password, $database);
 
-        // retrieving data from classes table
-        $sql = "SELECT * FROM events";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows >0){
-            while ($row = $result-> fetch_assoc()){
-                echo "<tr>
-                <td>" . $row['Date'] . "</td>
-                <td>" . $row['StartTime'] . "</td>
-                <td>" . $row['EndTime'] . "</td>
-                <td>" . $row['EventID'] . "</td>
-                <td>" . $row['EventName'] . "</td>
-                <td>" . $row['UserID'] . "</td>
-                </tr>";
-            }
-        } else{
-            echo"No Results";
-        }
+
+        //check connection 
+        if($conn->connect_error){
+        die("Connection failed" . $conn->connect_error);
+      }
+      else{
+      #EVENT
+
+      $findAllEvents = "SELECT e.EventID, e.StartTime, e.EndTime, e.Date, e.EventName, e.Notes, u.FirstName
+                       FROM Events e
+                       INNER JOIN Users u ON e.UserID = u.UserID";  // Assuming 'UserID' is in both tables
+      $result=$conn->query($findAllEvents);
+      if($result->num_rows>0){
+      while($row = $result->fetch_assoc()) {
+
+      echo "<tr>
+       <td>". $row['StartTime'] . "</td>
+       <td>".$row['EndTime'] . "</td>
+       <td>".$row['Date']. "</td>
+       <td>" . $row['FirstName'] . "</td>
+       <td>". $row['EventName']."</td>
+       <td>". $row['Notes']."</td>
+     </tr>";
+
+   }
+
+ }
+
+}
         ?>
     </table>
 </body>

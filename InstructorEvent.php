@@ -13,9 +13,9 @@ $firstNameofUser= $_SESSION['first_name'];
 
 //database info.
 $servername="localhost";
-$username="root";
-$password= "";
-$database= "SEProject2";
+$username="bageguqo_root";
+$password= "D@neUp!4567";
+$database= "bageguqo_SEProject2";
 
 
 //creating connection to the database
@@ -33,10 +33,27 @@ if(isset($_POST['event']))
  $createEventQuery="INSERT INTO Events (EventName,Date,StartTime,EndTime,Notes,UserID) VALUES ('$EventName','$Date','$StartTime','$EndTime','$Notes','$userID')";
 
 
+
     if($conn->query($createEventQuery) === TRUE)
     {
-    echo "Your event has been added!";
-    
+        $selectEventID="SELECT * FROM Events WHERE EventName = '$EventName' AND Date = '$Date'";
+        $result=$conn->query($selectEventID);
+        if($result->num_rows>0){
+            $row = $result->fetch_assoc();
+            $eventID = $row["EventID"];
+            if($result->num_rows>0){
+                $confirmEventQuery="INSERT INTO ConfirmEvent (EventID, UserID) VALUES ('$eventID', '$userID')";
+                if ($conn->query($confirmEventQuery) == TRUE) {
+                    header("Location:instructordashboard.php");
+                }
+                else {
+                    echo "Your request was not fulfilled. The event was not created".mysqli_error($conn);
+                }
+            } 
+    else {
+        echo "Your request was not fulfilled. The event was not created".mysqli_error($conn);
+    }
+        
     }
     else
     {
@@ -44,10 +61,11 @@ if(isset($_POST['event']))
     
     }
 
- 
+    
 
     $conn->close();
  }
+    }
 
 
     
