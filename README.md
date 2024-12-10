@@ -7,10 +7,6 @@ Our rock climbing gym managment system strives to help organize and maintain all
 With this project, we analyzed managaging an organized facilitiy such as rock climbing gym has various levels to it and can be an overwhelming task for staff, managment and even the consumer interacting with the facility. Using an online managment system to facilitate, track, and manage various different aspects of a rock climbing gym affect the experience in a positive way. 
 
 
-Methodology:
-
-
-
 ## Usage
 
 In order to use our webiste, please visit: https://bagel.wiki . Once on the page, create a account using the registration page and login with your credentials.
