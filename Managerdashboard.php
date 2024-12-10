@@ -42,9 +42,9 @@
       <table class="tablesFormatClasses">
         <tr class="bg-dark text-white">
           <th>ClassID</th>
+          <th> Date</th>
           <th> Start Time</th>
           <th> End Time</th>
-          <th> Date</th>
           <th> Instructor </th>
           <th>Class Name</th>
           <th> Seats </th>
@@ -85,9 +85,9 @@ $database= "bageguqo_SEProject2";
 
       echo "<tr>
        <td>" . $row['ClassID'] . "</td>
+        <td>".$row['Date']. "</td>
        <td>". $row['StartTime'] . "</td>
        <td>".$row['EndTime'] . "</td>
-       <td>".$row['Date']. "</td>
        <td>" . $row['FirstName'] . "</td>
        <td>". $row['ClassName']."</td>
        <td>". $row['Seats']."</td>
@@ -109,15 +109,18 @@ $database= "bageguqo_SEProject2";
   <table class="tablesFormatEvents">
     <tr class="bg-dark text-white">
       <th>EventID</th>
+       <th> Date</th>
       <th> Start Time</th>
       <th> End Time</th>
-      <th> Date</th>
       <th>Event Name</th>
+      <th> Host </th>
       <th>Notes</th>
     </tr>
     <?php
     #EVENT
-    $findAllEvents="SELECT * FROM `Events`";
+    $findAllEvents= "SELECT e.EventID, e.StartTime, e.EndTime, e.Date, e.EventName, e.Notes, u.FirstName
+                       FROM Events e
+                       INNER JOIN Users u ON e.UserID = u.UserID";
     $output=$conn ->query($findAllEvents);
 
     if($output->num_rows>0)
@@ -129,6 +132,7 @@ $database= "bageguqo_SEProject2";
         <td>".$instance['StartTime'] . "</td>
         <td>".$instance['EndTime'] . "</td>
         <td>".$instance['EventName']."</td>
+        <td>".$instance['FirstName']."</td>
         <td>".$instance['Notes']."</td>
       </tr>";
     }

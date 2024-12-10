@@ -122,6 +122,10 @@ $conn->close();
 	  </div>
 	</nav>  
 
+	<style>
+          <?php include 'style.css'; ?>
+        </style>
+
 	<div id="enrollContainer" class="dashboardContainers">
 		<h1>
 			Create an Account
@@ -158,7 +162,7 @@ $conn->close();
          
 
 			<input type="submit" value="Submit" name="submitregistration">
-			<p> Already have an account? <a href="login.html"> Login now</a></p>
+			<p> Already have an account? <a href="login.php"> Login now</a></p>
 
 		</form>
 	</div>

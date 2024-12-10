@@ -64,14 +64,6 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
 
       exit();
     }
-    else if ($role=="receptionist"){
-      $_SESSION['user_id']= $userID;
-      $_SESSION['first_name']= $firstName;
-
-      header("Location:Recdashboard.html"); 
-      exit();
-
-    }
     else if ($role== "manager"){
       $_SESSION['user_id']= $userID;
       $_SESSION['first_name']= $firstName;
@@ -133,7 +125,7 @@ if(isset($_POST['loginButton']) && !empty($_POST['loginButton']))
       <span class="errorText"> <?php echo $passwordError?> </span><br>
 			<input type ="password" id="Password" name="password" value=""><br>
 			<br> <input type="Submit" name ="loginButton" value="Submit">
-			<p> Don't have an account? <a href="register.html"> Register here</a></p>
+			<p> Don't have an account? <a href="register.php"> Register here</a></p>
 		</form>
 	</div>
 </body>

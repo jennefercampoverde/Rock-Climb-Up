@@ -54,9 +54,10 @@ $firstNameofUser= $_SESSION['first_name'];
     <br>
     <table class="tablesFormatClasses">
         <tr class="bg-dark text-white">
+            <th> Class ID </th>
+            <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Date</th>
             <th>Class Name</th>
             <th>Instructor</th>
             <th>Difficulty</th>
@@ -87,9 +88,10 @@ $database= "bageguqo_SEProject2";
       while($row = $result->fetch_assoc()) {
 
       echo "<tr>
+       <td>". $row['ClassID'] . "</td>
+        <td>".$row['Date']. "</td> 
        <td>". $row['StartTime'] . "</td>
        <td>".$row['EndTime'] . "</td>
-       <td>".$row['Date']. "</td>
        <td>" . $row['ClassName'] . "</td>
        <td>". $row['FirstName']."</td>
        <td>". $row['Difficulty']."</td>
@@ -110,9 +112,10 @@ $database= "bageguqo_SEProject2";
     <br>
     <table class="tablesFormatEvents">
         <tr class="bg-dark text-white">
+          <th> Event ID </th>
+            <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Date</th>
             <th>Host</th>
             <th>Event Name</th>
             <th>Notes</th>
@@ -141,9 +144,10 @@ $database= "bageguqo_SEProject2";
       while($row = $result->fetch_assoc()) {
 
       echo "<tr>
+       <td>". $row['EventID'] . "</td> 
+      <td>".$row['Date']. "</td>
        <td>". $row['StartTime'] . "</td>
        <td>".$row['EndTime'] . "</td>
-       <td>".$row['Date']. "</td>
        <td>" . $row['FirstName'] . "</td>
        <td>". $row['EventName']."</td>
        <td>". $row['Notes']."</td>

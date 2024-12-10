@@ -40,15 +40,15 @@ $firstNameofUser= $_SESSION['first_name'];
 </nav>	
 <h1 class="headers"> Welcome to your dashboard, <?php echo $firstNameofUser; ?>!</h1>
 <div id="1" class="scroll">
-<h2 class="tableHeaders"> Your Classes </h2>
+<h2 class="tableHeaders"> Upcoming Classes You Are Teaching </h2>
 <table class="tablesFormatClasses">
   <br>
     <thead>
     <tr class="bg-dark text-white">
       <th>ClassID</th>
+      <th> Date</th>
       <th> Start Time</th>
       <th> End Time</th>
-      <th> Date</th>
       <th>Event Name</th>
       <th>Notes</th>
     </tr>
@@ -74,16 +74,16 @@ if($conn->connect_error){
  else{
  #CLASS
 
-$findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID = C.ClassID WHERE O.UserID = '$userID'";
+$findUserClass="SELECT * FROM Classes WHERE UserID = '$userID'";
  $result=$conn->query($findUserClass);
  if($result->num_rows>0){
    while($row = $result->fetch_assoc()) {
 
    echo "<tr>
    <td>" . $row['ClassID'] . "</td>
+      <td>".$row['Date']. "</td>
    <td>". $row['StartTime'] . "</td>
    <td>".$row['EndTime'] . "</td>
-   <td>".$row['Date']. "</td>
    <td>". $row['ClassName']."</td>
    <td>". $row['Difficulty']."</td>
    </tr>";
@@ -99,15 +99,15 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 </div>
 
 <div >
-  <h2 class="tableHeaders"> Your Events </h2>
+  <h2 class="tableHeaders"> Upcoming Events You Are Hosting </h2>
   <table class="tablesFormatEvents">
   <br>
     <thead>
     <tr class="bg-dark text-white">
       <th>EventID</th>
+      <th> Date</th>
       <th> Start Time</th>
       <th> End Time</th>
-      <th> Date</th>
       <th>Event Name</th>
       <th>Notes</th>
     </tr>
@@ -116,7 +116,7 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 
  <?php
  #EVENT
- $findUserEvent="SELECT * FROM ConfirmEvent O INNER JOIN Events C ON O.EventID = C.EventID WHERE O.UserID = '$userID'";
+ $findUserEvent="SELECT * FROM Events WHERE UserID = '$userID'";
  $output=$conn ->query($findUserEvent);
 
  if($output->num_rows>0)

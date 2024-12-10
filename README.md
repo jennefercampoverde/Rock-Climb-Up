@@ -23,4 +23,4 @@ Purpose: Explain how to use the project or software.
 Suggested Content: Code snippets, example commands, or screenshots that show the project in action.
 
 
-4. Credits and Acknowledgments
+4. Credits and Acknowledgment

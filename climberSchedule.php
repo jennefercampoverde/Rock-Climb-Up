@@ -62,7 +62,7 @@ $firstNameofUser= $_SESSION['first_name'];
     <br>
     <table class="tablesFormatClasses">
         <tr class="bg-dark text-white">
-            <th>Class Code</th>
+            <th>Class ID</th>
             <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -99,9 +99,9 @@ $database= "bageguqo_SEProject2";
 
       echo "<tr>
         <td>" . $row['ClassID'] . "</td>
+       <td>".$row['Date']. "</td>
        <td>". $row['StartTime'] . "</td>
        <td>".$row['EndTime'] . "</td>
-       <td>".$row['Date']. "</td>
        <td>" . $row['ClassName'] . "</td>
        <td>". $row['FirstName']."</td>
        <td>". $row['Difficulty']."</td>
@@ -122,7 +122,7 @@ $database= "bageguqo_SEProject2";
     <br>
     <table class="tablesFormatEvents">
         <tr class="bg-dark text-white">
-            <th>Event Code</th>
+            <th>Event ID</th>
             <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -155,9 +155,9 @@ $database= "bageguqo_SEProject2";
 
       echo "<tr>
         <td>" . $row['EventID'] . "</td>
+        <td>".$row['Date']. "</td>
        <td>". $row['StartTime'] . "</td>
        <td>".$row['EndTime'] . "</td>
-       <td>".$row['Date']. "</td>
        <td>" . $row['FirstName'] . "</td>
        <td>". $row['EventName']."</td>
        <td>". $row['Notes']."</td>

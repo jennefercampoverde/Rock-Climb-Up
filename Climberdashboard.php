@@ -50,11 +50,11 @@ $firstNameofUser= $_SESSION['first_name'];
     <thead>
     <tr class="bg-dark text-white">
       <th>ClassID</th>
+      <th> Date</th>
       <th> Start Time</th>
       <th> End Time</th>
-      <th> Date</th>
       <th>Event Name</th>
-      <th>Notes</th>
+      <th>Difficulty</th>
     </tr>
     </thead>
     <tbody>
@@ -83,9 +83,9 @@ $findUserClass="SELECT * FROM ConfirmClass O INNER JOIN Classes C ON O.ClassID =
 
    echo "<tr>
    <td>" . $row['ClassID'] . "</td>
+    <td>".$row['Date']. "</td>
    <td>". $row['StartTime'] . "</td>
    <td>".$row['EndTime'] . "</td>
-   <td>".$row['Date']. "</td>
    <td>". $row['ClassName']."</td>
    <td>". $row['Difficulty']."</td>
    </tr>";
